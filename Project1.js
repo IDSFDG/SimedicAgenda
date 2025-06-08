@@ -57248,7 +57248,8 @@ rtl.module("Unit1",["System","SysUtils","Classes","JS","Web","WEBLib.Graphics","
           height: "parent",
          width: "parent",
           windowResize: function(view) {
-          alert('The calendar has adjusted to a window resize');
+          //alert('The calendar has adjusted to a window resize');
+          alert('El calendario ha ajustado tamaño de ventana');
         }  ,
           handleWindowResize:"true",
           initialView: 'dayGridMonth',
@@ -57311,6 +57312,9 @@ rtl.module("Unit1",["System","SysUtils","Classes","JS","Web","WEBLib.Graphics","
       
         });
     };
+    this.WebFormCreate = function (Sender) {
+      this.WebButton1Click(Sender);
+    };
     this.LoadDFMValues = function () {
       pas["WEBLib.Forms"].TCustomForm.LoadDFMValues.call(this);
       this.WebHTMLDiv1 = pas["WEBLib.WebCtrls"].THTMLDiv.$create("Create$2",["calendario"]);
@@ -57333,6 +57337,7 @@ rtl.module("Unit1",["System","SysUtils","Classes","JS","Web","WEBLib.Graphics","
         this.FFont.SetName("Tahoma");
         this.FFont.SetStyle({});
         this.SetParentFont(false);
+        this.SetEvent(this,"OnCreate","WebFormCreate");
         this.WebHTMLDiv1.SetParentComponent(this);
         this.WebHTMLDiv1.SetName("WebHTMLDiv1");
         this.WebHTMLDiv1.SetLeft(0);
@@ -57366,6 +57371,7 @@ rtl.module("Unit1",["System","SysUtils","Classes","JS","Web","WEBLib.Graphics","
         this.WebButton1.SetElementFont(pas["WEBLib.Controls"].TElementFont.efCSS);
         this.WebButton1.SetHeightStyle(pas["WEBLib.Controls"].TSizeStyle.ssAuto);
         this.WebButton1.SetHeightPercent(100.000000000000000000);
+        this.WebButton1.SetVisible(false);
         this.WebButton1.SetWidthPercent(100.000000000000000000);
         this.SetEvent$1(this.WebButton1,this,"OnClick","WebButton1Click");
         this.WebButton2.SetParentComponent(this.WebPanel1);
@@ -57380,6 +57386,7 @@ rtl.module("Unit1",["System","SysUtils","Classes","JS","Web","WEBLib.Graphics","
         this.WebButton2.SetElementFont(pas["WEBLib.Controls"].TElementFont.efCSS);
         this.WebButton2.SetHeightStyle(pas["WEBLib.Controls"].TSizeStyle.ssAuto);
         this.WebButton2.SetHeightPercent(100.000000000000000000);
+        this.WebButton2.SetVisible(false);
         this.WebButton2.SetWidthPercent(100.000000000000000000);
       } finally {
         this.WebHTMLDiv1.AfterLoadDFMValues();
@@ -57396,6 +57403,7 @@ rtl.module("Unit1",["System","SysUtils","Classes","JS","Web","WEBLib.Graphics","
     $r.addField("WebButton1",pas["WEBLib.StdCtrls"].$rtti["TButton"]);
     $r.addField("WebButton2",pas["WEBLib.StdCtrls"].$rtti["TButton"]);
     $r.addMethod("WebButton1Click",0,[["Sender",pas.System.$rtti["TObject"]]]);
+    $r.addMethod("WebFormCreate",0,[["Sender",pas.System.$rtti["TObject"]]]);
   });
   this.Form1 = null;
 });
