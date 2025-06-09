@@ -57242,6 +57242,11 @@ rtl.module("Unit1",["System","SysUtils","Classes","JS","Web","WEBLib.Graphics","
           };
           return es;
       }());
+      const addMinutesToDate = (date, n) => {
+        const d = new Date(date);
+        d.setTime(d.getTime() + n * 60_000);
+        return d;
+      };
       //   document.addEventListener('DOMContentLoaded', function() {
       //  var calendarEl = document.getElementById('calendario');
         var calendar = new FullCalendar.Calendar(calendario, {
@@ -57252,9 +57257,26 @@ rtl.module("Unit1",["System","SysUtils","Classes","JS","Web","WEBLib.Graphics","
           alert('El calendario ha ajustado tamaño de ventana');
         }  ,
           handleWindowResize:"true",
-          initialView: 'dayGridMonth',
+          //initialView: 'dayGridMonth',
          // initialView: 'timeGridWeek',
           headerToolbar: {center: 'title', left: 'dayGridMonth,timeGridWeek' }, // buttons for switching between views,
+          headerToolbar: {
+          left: 'prev,next',
+          center: 'title',
+          //right: 'dayGridWeek,dayGridDay' // user can switch between the two
+          right: 'timeGridWeek,dayGridWeek' // user can switch between the two
+          },
+          initialView: 'timeGridWeek',
+        //  slotDuration: '00:15',
+          slotLabelFormat:{
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: true,
+            meridiem: 'short',
+         },
+         slotDuration: "00:15:00", // 15 minutos
+         slotLabelInterval: "00:15:00" ,
+        // eventShortHeight:"regular",
       
           locale: 'es',
           theme: true,
@@ -57273,16 +57295,27 @@ rtl.module("Unit1",["System","SysUtils","Classes","JS","Web","WEBLib.Graphics","
           ],
           dateClick: function(info) {
                  // alert('Clicked on: ' + info.dateStr);
+                 // alert('Clicked on: ' + info.dateStr);
                  // alert('Current view: ' + info.view.type);
                   // change the day's background color just for fun
-                //info.dayEl.style.backgroundColor = 'red';      ojo pinta de rojo fecha
+                //info.dayEl.style.backgroundColor = 'red',
+                var inicio = info.dateStr;
+                var fin = addMinutesToDate(Date.parse(inicio),15);
+                var finf =  new Date(fin);
+                let evento = prompt("Capturar Titulo Evento:", "");
+                if (evento !=null)
+                {
+                   // eventInfo.event.setProp('title', evento);
+                 }
             calendar.addEvent({
                   title: 'Nuevo Evento',
-                  start: info.dateStr,
-                 "end":  info.dateStr,
-                  allDay: false
-                 });
-      
+                  title:evento,
+                 // start: info.dateStr,
+                // "end":  info.dateStr,
+                  start: inicio,
+                  "end": fin,
+                   allDay: false
+                  });
               },
       
           eventClick: function(eventInfo){
@@ -57307,7 +57340,7 @@ rtl.module("Unit1",["System","SysUtils","Classes","JS","Web","WEBLib.Graphics","
           calendar.addEvent({
               title: 'Second Event',
               start: '2025-06-08T12:30:00',
-              "end": '2025-06-08T13:30:00'
+              "end": '2025-06-08T12:45:00'
             });
       
         });
