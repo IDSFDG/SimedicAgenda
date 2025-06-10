@@ -57253,8 +57253,8 @@ rtl.module("Unit1",["System","SysUtils","Classes","JS","Web","WEBLib.Graphics","
           height: "parent",
          width: "parent",
           windowResize: function(view) {
-          //alert('The calendar has adjusted to a window resize');
-          alert('El calendario ha ajustado tamaño de ventana');
+          //alert('The calendar has adjusted to a window resize');    //OK
+          //alert('El calendario ha ajustado tamaño de ventana');     //OK
         }  ,
           handleWindowResize:"true",
           //initialView: 'dayGridMonth',
