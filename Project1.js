@@ -57306,16 +57306,16 @@ rtl.module("Unit1",["System","SysUtils","Classes","JS","Web","WEBLib.Graphics","
                 if (evento !=null)
                 {
                    // eventInfo.event.setProp('title', evento);
-                 }
-            calendar.addEvent({
-                  title: 'Nuevo Evento',
-                  title:evento,
-                 // start: info.dateStr,
-                // "end":  info.dateStr,
-                  start: inicio,
-                  "end": fin,
-                   allDay: false
-                  });
+               calendar.addEvent({
+                     title: 'Nuevo Evento',
+                     title:evento,
+                   // start: info.dateStr,
+                  // "end":  info.dateStr,
+                    start: inicio,
+                    "end": fin,
+                     allDay: false
+                    });
+                 }  //evento !=null
               },
       
           eventClick: function(eventInfo){
